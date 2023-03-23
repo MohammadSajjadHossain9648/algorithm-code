@@ -1,16 +1,15 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<string>
 using namespace std;
 
 int main()
 {
-    list<int> adj[100];
-    list<int>::iterator it;
-
-    int x,sum[100]= {0},max=0,max1=0,a,b;
+    int x,arr[100][100],sum[100]= {0},sum1[100]= {0},max=0,max1=0;
+    string a;
     cout<<"input the vertix :\n";
     cin>>x;
 
-    int i=1,j=1,k=1,s=0;
+    int i=1,j=1,k=1;
 
     while(i!=0&&j!=0)
     {
@@ -19,53 +18,68 @@ int main()
 
         if(i<=x&&j<=x)
         {
-            adj[i].push_back(j);
-            adj[j].push_back(i);
+            arr[i][j]=1;
+            arr[j][i]=1;
             k++;
         }
-        else if(i==0||j==0)
+        else if(i==0&&j==0)
         {
             break;
         }
         else
             cout<<"wrong input\n";
+
     }
 
     for(int i=1; i<=x; i++)
     {
-        cout<<"adj["<<i<<"]";
-        for(it=adj[i].begin(); it!=adj[i].end(); it++)
+        for(int j=1; j<=x; j++)
         {
-            cout<<"-->"<<*it;
+            cout<<arr[i][j]<<"\t";
+            sum[i]=sum[i]+arr[i][j];
+            sum1[j]=sum1[j]+arr[j][i];
+        }
+        cout<<"\n";
+    }
 
+    while(i==j){
+        cout<<"\nit is a self loop graph\n";
+                break;
+    }
 
-            }
-    cout<<"\n";
-}
-for(int i=1; i<=x; i++){
-    sum[i]=0;
-}
-for(int i=1; i<=x; i++)
+    //sum of row
+    for(int i=1; i<=x; i++)
     {
-        for(it=adj[i].begin(); it!=adj[i].end(); it++)
-        {
-                if(*it==1)
-                    sum[a]=sum[a]+1;
-                else if(*it==1)
-                    sum[a]=sum[a]+1;
-                else if(*it==1)
-                    sum[a]=sum[a]+1;
-                else if(*it==1)
-                    sum[a]=sum[a]+1;
-                else if(*it==1)
-                    sum[a]=sum[a]+1;
-
+        cout<<"\nsum of row "<<i<<": "<<sum[i];
+        if(max<sum[i])
+            max=sum[i];
+    }
+    cout<<"\nmax outdegree :"<<max<<"\n";
+    for(int i=1;i<=x;i++){
+            if(max=sum[i]){
+                //problem of column no.
+                cout<<"\nmax row no.: ";
+                cout<<i;
             }
-    cout<<"\n";
-}
- for(int i=1; i<=x; i++){
-    cout<<"indegree of node "<<i<<": "<<sum[i]<<"\n";
- }
+    }
 
+    //sum of column
+    for(int j=1; j<=x; j++)
+    {
+        cout<<"\nsum of column "<<j<<": "<<sum1[j];
+        if(max1<sum1[j])
+            max1=sum1[j];
+    }
+    cout<<"\nmax indegree :"<<max1<<"\n";
+    for(int j=1; j<=x; j++)
+    {
+        if(max1=sum1[j])
+        {
+            //problem of column no.
+            cout<<"\nmax column no.: ";
+            cout<<j;
+        }
+    }
 
+    return 0;
 }
