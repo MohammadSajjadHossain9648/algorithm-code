@@ -19,11 +19,11 @@ int main()
         if( x == 0 && y == 0)
         {
             break;
-            //cout<<"Invalid Input Try Again"<<endl;
+            //cout<<"Invalid Input Try Again"<<"\n";
         }
         else if(x <= 0 || y <= 0 || x > ver || y > ver)
         {
-             cout<<"Invalid Input Try Again"<<endl;
+             cout<<"Invalid Input Try Again\n";
         }
         else
         {
@@ -58,15 +58,15 @@ int main()
             max_outdegeee = outdegree[i];
         }
         //outdegree[i] = counter;
-        cout<<endl;
+        cout<<"\n";
     }
     if(self_loop == true)
     {
-        cout<<"The graph contains self loop"<<endl;
+        cout<<"The graph contains self loop\n";
     }
     else
     {
-        cout<<"The following graph does not contain any self-loops"<<endl;
+        cout<<"The following graph does not contain any self-loops\n";
     }
     printf("Maximum Indegree is : %d and maximum outdegree is : %d\n", max_indegeee, max_outdegeee);
     for(int i=1; i<= ver ; i++)
@@ -81,7 +81,7 @@ int main()
             cout<<i<<" ";
         }
     }
-    cout<<endl<<"These vertices have the highest indegree: ";
+    cout<<"\nThese vertices have the highest indegree: ";
     for(int i=1; i<= ver ; i++)
     {
         if(indegree[i] == max_indegeee)
@@ -89,7 +89,7 @@ int main()
             cout<<i<<" ";
         }
     }
-    cout<<endl;
+    cout<<"\n";
 
     cout<<"These vertices have the odd outdegree: ";
     for(int i=1; i<= ver ; i++)
@@ -99,7 +99,7 @@ int main()
             cout<<i<<" ";
         }
     }
-    cout<<endl<<"These vertices have the even indegree: ";
+    cout<<"\nThese vertices have the even indegree: ";
     for(int i=1; i<= ver ; i++)
     {
         if(indegree[i] % 2 == 0)
@@ -107,7 +107,7 @@ int main()
             cout<<i<<" ";
         }
     }
-    cout<<endl;
+    cout<<"\n";
     bool universal_sink = 0;
     for(int i =1; i<= ver; i++)
     {
@@ -121,10 +121,10 @@ int main()
     }
     if(universal_sink == true)
     {
-        cout<<"The graph contains universal sink"<<endl;
+        cout<<"The graph contains universal sink\n";
     }
     else
     {
-        cout<<"The following graph does not contain any universal sink"<<endl;
+        cout<<"The following graph does not contain any universal sink\n";
     }
 }
